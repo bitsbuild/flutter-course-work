@@ -39,7 +39,7 @@ class _QuizAppResultsState extends State<QuizAppResults> {
                 ),
                 onPressed: () => {},
                 child: Text(
-                  '',
+                  'Question 1 Results',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -58,7 +58,7 @@ class _QuizAppResultsState extends State<QuizAppResults> {
                 ),
                 onPressed: () => {},
                 child: Text(
-                  '',
+                  'Question 2 Results',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -77,7 +77,7 @@ class _QuizAppResultsState extends State<QuizAppResults> {
                 ),
                 onPressed: () => {},
                 child: Text(
-                  '',
+                  'Question 3 Results',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -96,7 +96,7 @@ class _QuizAppResultsState extends State<QuizAppResults> {
                 ),
                 onPressed: () => {},
                 child: Text(
-                  '',
+                  'Question 4 Results',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -115,7 +115,7 @@ class _QuizAppResultsState extends State<QuizAppResults> {
                 ),
                 onPressed: () => {},
                 child: Text(
-                  '',
+                  'Question 5 Results',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -134,7 +134,7 @@ class _QuizAppResultsState extends State<QuizAppResults> {
                 ),
                 onPressed: () => {},
                 child: Text(
-                  '',
+                  'Question 6 Results',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -153,7 +153,7 @@ class _QuizAppResultsState extends State<QuizAppResults> {
                 ),
                 onPressed: () => {},
                 child: Text(
-                  '',
+                  'Question 7 Results',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -172,7 +172,7 @@ class _QuizAppResultsState extends State<QuizAppResults> {
                 ),
                 onPressed: () => {},
                 child: Text(
-                  '',
+                  'Question 8 Results',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -191,7 +191,7 @@ class _QuizAppResultsState extends State<QuizAppResults> {
                 ),
                 onPressed: () => {},
                 child: Text(
-                  '',
+                  'Question 9 Results',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -210,7 +210,26 @@ class _QuizAppResultsState extends State<QuizAppResults> {
                 ),
                 onPressed: () => {},
                 child: Text(
-                  '',
+                  'Question 10 Results',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),
+              ),
+            ),
+            SizedBox(height: 30),
+            SizedBox(
+              height: 80,
+              width: 230,
+              child: OutlinedButton(
+                style: ButtonStyle(
+                  shape: WidgetStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0),
+                    ),
+                  ),
+                ),
+                onPressed: () => {},
+                child: Text(
+                  'Retake The Test',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
