@@ -12,6 +12,7 @@ class QuizApp extends StatelessWidget {
     return MaterialApp(
       home: QuizAppScaffold(),
       debugShowCheckedModeBanner: false,
+      title: 'Flutter Quiz',
     );
   }
 }
