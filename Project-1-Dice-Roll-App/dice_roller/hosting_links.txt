@@ -1,2 +1,2 @@
-Link-1: https://flutter-dice-roll-by-jash.web.app/
-Link-2: https://flutter-dice-roll-by-jash.firebaseapp.com/
+Link-1: https://flutter-dice-app-by-jash.web.app/
+Link-2: https://flutter-dice-app-by-jash.firebaseapp.com/

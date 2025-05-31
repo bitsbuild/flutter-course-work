@@ -11,6 +11,7 @@ class DiceRoller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Dice Roller',
       home: DiceRollerScaffold(),
       debugShowCheckedModeBanner: false,
     );
