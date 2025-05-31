@@ -130,7 +130,9 @@ class _QuizAppQuestion extends State<QuizAppQuestion> {
                           if (curr < 9) {
                             curr = curr + 1;
                           } else {
-                            widget.funcs(QuizAppResults());
+                            widget.funcs(
+                              QuizAppResults(sc: scores, corr: correctAnswers),
+                            );
                           }
                         }),
                       }
@@ -141,7 +143,9 @@ class _QuizAppQuestion extends State<QuizAppQuestion> {
                           if (curr < 9) {
                             curr = curr + 1;
                           } else {
-                            widget.funcs(QuizAppResults());
+                            widget.funcs(
+                              QuizAppResults(sc: scores, corr: correctAnswers),
+                            );
                           }
                         }),
                       },
@@ -172,7 +176,9 @@ class _QuizAppQuestion extends State<QuizAppQuestion> {
                           if (curr < 9) {
                             curr = curr + 1;
                           } else {
-                            widget.funcs(QuizAppResults());
+                            widget.funcs(
+                              QuizAppResults(sc: scores, corr: correctAnswers),
+                            );
                           }
                         }),
                       }
@@ -183,7 +189,9 @@ class _QuizAppQuestion extends State<QuizAppQuestion> {
                           if (curr < 9) {
                             curr = curr + 1;
                           } else {
-                            widget.funcs(QuizAppResults());
+                            widget.funcs(
+                              QuizAppResults(sc: scores, corr: correctAnswers),
+                            );
                           }
                         }),
                       },
@@ -214,7 +222,9 @@ class _QuizAppQuestion extends State<QuizAppQuestion> {
                           if (curr < 9) {
                             curr = curr + 1;
                           } else {
-                            widget.funcs(QuizAppResults());
+                            widget.funcs(
+                              QuizAppResults(sc: scores, corr: correctAnswers),
+                            );
                           }
                         }),
                       }
@@ -225,7 +235,9 @@ class _QuizAppQuestion extends State<QuizAppQuestion> {
                           if (curr < 9) {
                             curr = curr + 1;
                           } else {
-                            widget.funcs(QuizAppResults());
+                            widget.funcs(
+                              QuizAppResults(sc: scores, corr: correctAnswers),
+                            );
                           }
                         }),
                       },
@@ -256,7 +268,9 @@ class _QuizAppQuestion extends State<QuizAppQuestion> {
                           if (curr < 9) {
                             curr = curr + 1;
                           } else {
-                            widget.funcs(QuizAppResults());
+                            widget.funcs(
+                              QuizAppResults(sc: scores, corr: correctAnswers),
+                            );
                           }
                         }),
                       }
@@ -267,7 +281,9 @@ class _QuizAppQuestion extends State<QuizAppQuestion> {
                           if (curr < 9) {
                             curr = curr + 1;
                           } else {
-                            widget.funcs(QuizAppResults());
+                            widget.funcs(
+                              QuizAppResults(sc: scores, corr: correctAnswers),
+                            );
                           }
                         }),
                       },
