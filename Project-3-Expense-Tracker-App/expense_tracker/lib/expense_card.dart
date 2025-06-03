@@ -42,10 +42,10 @@ class _ExpenseCardState extends State<ExpenseCard> {
       height: 200,
       width: double.infinity,
       child: Card(
-        elevation: 10,
-        surfaceTintColor: Colors.yellow,
+        elevation: 30,
+        surfaceTintColor: Colors.grey,
         color: Colors.black,
-        shape: Border.all(width: 2, style: BorderStyle.solid),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
