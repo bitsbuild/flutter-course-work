@@ -41,6 +41,7 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(flexibleSpace: Container(color: Colors.black)),
       body: Container(
         color: Colors.black,
         child: Padding(
