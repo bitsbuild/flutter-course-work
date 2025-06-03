@@ -25,7 +25,7 @@ class _ExpenseCardState extends State<ExpenseCard> {
       width: double.infinity,
       child: Card(
         elevation: 10,
-        surfaceTintColor: Colors.blue,
+        surfaceTintColor: Colors.yellow,
         color: Colors.black,
         shape: Border.all(width: 2, style: BorderStyle.solid),
         child: Padding(
