@@ -44,15 +44,7 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
       appBar: AppBar(flexibleSpace: Container(color: Colors.black)),
       body: Container(
         color: Colors.black,
-        child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(width: 3, color: Colors.red),
-            ),
-            child: wid,
-          ),
-        ),
+        child: Padding(padding: const EdgeInsets.all(25.0), child: wid),
       ),
     );
   }

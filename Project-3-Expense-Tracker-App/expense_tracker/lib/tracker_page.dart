@@ -1,3 +1,4 @@
+import 'package:expense_tracker/expenses_list.dart';
 import 'package:expense_tracker/models/expense.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,15 @@ class _TrackerPageState extends State<TrackerPage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Text('Analytics', style: TextStyle(color: Colors.white)),
+          SizedBox(height: 200, child: ExpenseList(expenses: expensesList)),
+        ],
+      ),
+    );
   }
 }
