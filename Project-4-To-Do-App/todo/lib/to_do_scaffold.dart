@@ -21,13 +21,23 @@ class _ToDoScaffold extends State<ToDoScaffold> {
     'Test-9',
     'Test-10',
   ];
-  List<Color> colorTheme = [Color(0xff41295a), Color(0xff2F0743)];
+  List<Color> colorTheme = [Color(0xff000000), Color(0xff000000)];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 90,
-        centerTitle: true,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: FloatingActionButton(
+              onPressed: () {},
+              shape: Border.all(color: Colors.grey, width: 3),
+              backgroundColor: Colors.black,
+              child: Icon(Icons.add, color: Colors.grey),
+            ),
+          ),
+        ],
         title: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Text(
@@ -35,7 +45,7 @@ class _ToDoScaffold extends State<ToDoScaffold> {
             style: GoogleFonts.robotoSlab(
               textStyle: TextStyle(
                 fontSize: 75,
-                color: Colors.white,
+                color: Colors.grey,
                 fontWeight: FontWeight.bold,
               ),
             ),

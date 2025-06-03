@@ -23,6 +23,7 @@ class _ToDoViewState extends State<ToDoView> {
                 height: 130,
                 width: double.infinity,
                 child: Card(
+                  color: Colors.grey,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
