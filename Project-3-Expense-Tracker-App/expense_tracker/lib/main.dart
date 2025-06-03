@@ -68,7 +68,25 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(flexibleSpace: Container(color: Colors.black)),
+      appBar: AppBar(
+        toolbarHeight: 100,
+        flexibleSpace: Container(color: Colors.black),
+        title: Text(
+          'Flutter Expense Tracker',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FloatingActionButton(
+              tooltip: 'Add Your Expense',
+              onPressed: () {},
+              backgroundColor: Colors.black,
+              child: Icon(Icons.add, color: Colors.white),
+            ),
+          ),
+        ],
+      ),
       body: Container(
         color: Colors.black,
         child: Padding(padding: const EdgeInsets.all(25.0), child: wid),
