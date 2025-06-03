@@ -41,25 +41,25 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
 
   List<Expense> expensesList = [
     Expense(
-      title: 'Expense-1',
+      title: 'Had A Pizza',
       category: Category.food,
       amount: 5.05,
       date: DateTime.now(),
     ),
     Expense(
-      title: 'Expense-2',
+      title: 'Purchased A Wireless Keyboard',
       category: Category.work,
       amount: 10.55,
       date: DateTime.now(),
     ),
     Expense(
-      title: 'Expense-3',
+      title: 'Train Ticket To Churchgate',
       category: Category.travel,
       amount: 15.05,
       date: DateTime.now(),
     ),
     Expense(
-      title: 'Expense-4',
+      title: 'Adventure Park Ticket',
       category: Category.leisure,
       amount: 20.55,
       date: DateTime.now(),
