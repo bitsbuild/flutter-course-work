@@ -6,12 +6,18 @@ class ExpenseCard extends StatefulWidget {
   late double amount;
   late DateTime date;
   late Category category;
+  late String id;
+  ValueChanged<List<Expense>> func;
+  List<Expense> el;
   ExpenseCard({
     super.key,
     required this.title,
     required this.category,
     required this.amount,
     required this.date,
+    required this.func,
+    required this.el,
+    required this.id,
   });
   @override
   State<ExpenseCard> createState() => _ExpenseCardState();
@@ -54,9 +60,24 @@ class _ExpenseCardState extends State<ExpenseCard> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Center(
-                child: Text(
-                  '${widget.title}',
-                  style: TextStyle(color: Colors.white),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '${widget.title}',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    IconButton(
+                      onPressed:
+                          () => {
+                            widget.func(
+                              List.from(widget.el)
+                                ..removeWhere((e) => e.id == widget.id),
+                            ),
+                          },
+                      icon: Icon(Icons.delete, color: Colors.red),
+                    ),
+                  ],
                 ),
               ),
               Row(

@@ -4,8 +4,14 @@ import 'package:flutter/material.dart';
 
 class TrackerPage extends StatefulWidget {
   ValueChanged<Widget> fun;
+  ValueChanged<List<Expense>> func;
   List<Expense> expensesList;
-  TrackerPage({super.key, required this.fun, required this.expensesList});
+  TrackerPage({
+    super.key,
+    required this.fun,
+    required this.expensesList,
+    required this.func,
+  });
 
   @override
   State<TrackerPage> createState() => _TrackerPageState();
@@ -22,7 +28,10 @@ class _TrackerPageState extends State<TrackerPage> {
           Text('Analytics', style: TextStyle(color: Colors.white)),
           SizedBox(
             height: 200,
-            child: ExpenseList(expenses: widget.expensesList),
+            child: ExpenseList(
+              expenses: widget.expensesList,
+              func: widget.func,
+            ),
           ),
         ],
       ),

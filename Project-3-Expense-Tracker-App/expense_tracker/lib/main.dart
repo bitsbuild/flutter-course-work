@@ -30,7 +30,11 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
   @override
   void initState() {
     super.initState();
-    wid = TrackerPage(fun: widgetChanger, expensesList: expensesList);
+    wid = TrackerPage(
+      fun: widgetChanger,
+      expensesList: expensesList,
+      func: func,
+    );
   }
 
   void widgetChanger(Widget w) {
@@ -69,6 +73,17 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
   double amount = 00.00;
   late DateTime date;
   Category category = Category.food;
+  void func(List<Expense> updatedList) {
+    setState(() {
+      expensesList = updatedList;
+      wid = TrackerPage(
+        fun: widgetChanger,
+        expensesList: expensesList,
+        func: func,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -233,6 +248,7 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
                                         wid = TrackerPage(
                                           fun: widgetChanger,
                                           expensesList: expensesList,
+                                          func: func,
                                         );
                                       }),
 
