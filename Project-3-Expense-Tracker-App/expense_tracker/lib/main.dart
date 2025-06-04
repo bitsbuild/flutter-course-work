@@ -65,10 +65,10 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
       date: DateTime.now(),
     ),
   ];
-  late String title;
-  late double amount;
+  String title = '';
+  double amount = 00.00;
   late DateTime date;
-  late Category category;
+  Category category = Category.food;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +93,7 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
                     return Container(
                       decoration: BoxDecoration(
                         color: Colors.black,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(0),
                       ),
                       child: Center(
                         child: Column(
@@ -113,6 +113,12 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
                             Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: TextField(
+                                onChanged:
+                                    (str) => {
+                                      setState(() {
+                                        title = str;
+                                      }),
+                                    },
                                 style: TextStyle(color: Colors.white),
                                 // maxLength: 50,
                                 decoration: InputDecoration(
@@ -127,21 +133,12 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
                             Padding(
                               padding: const EdgeInsets.all(20.0),
                               child: TextField(
-                                keyboardType: TextInputType.datetime,
-                                style: TextStyle(color: Colors.white),
-                                decoration: InputDecoration(
-                                  labelStyle: TextStyle(color: Colors.white),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  label: Text('Enter Expense Date And Time'),
-                                ),
-                              ),
-                            ),
-
-                            Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: TextField(
+                                onChanged:
+                                    (integer) => {
+                                      setState(() {
+                                        amount = double.tryParse(integer) ?? 0;
+                                      }),
+                                    },
                                 keyboardType: TextInputType.number,
                                 style: TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
@@ -183,7 +180,33 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
                                     child: Text('Work'),
                                   ),
                                 ],
-                                onChanged: (str) => {},
+                                onChanged:
+                                    (str) => {
+                                      if (str == 'Food')
+                                        {
+                                          setState(() {
+                                            category = Category.food;
+                                          }),
+                                        }
+                                      else if (str == 'Work')
+                                        {
+                                          setState(() {
+                                            category = Category.work;
+                                          }),
+                                        }
+                                      else if (str == 'Leisure')
+                                        {
+                                          setState(() {
+                                            category = Category.leisure;
+                                          }),
+                                        }
+                                      else if (str == 'Travel')
+                                        {
+                                          setState(() {
+                                            category = Category.travel;
+                                          }),
+                                        },
+                                    },
                               ),
                             ),
                             Padding(
@@ -196,7 +219,25 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
                                     ),
                                   ),
                                 ),
-                                onPressed: () => {},
+                                onPressed:
+                                    () => {
+                                      setState(() {
+                                        expensesList.add(
+                                          Expense(
+                                            title: title,
+                                            amount: amount,
+                                            category: category,
+                                            date: DateTime.now(),
+                                          ),
+                                        );
+                                        wid = TrackerPage(
+                                          fun: widgetChanger,
+                                          expensesList: expensesList,
+                                        );
+                                      }),
+
+                                      Navigator.of(context).pop(),
+                                    },
                                 child: Text(
                                   'Create Expense Record',
                                   style: TextStyle(
