@@ -9,18 +9,7 @@ class ToDoScaffold extends StatefulWidget {
 }
 
 class _ToDoScaffold extends State<ToDoScaffold> {
-  List<String> toDoList = [
-    'Test-1',
-    'Test-2',
-    'Test-3',
-    'Test-4',
-    'Test-5',
-    'Test-6',
-    'Test-7',
-    'Test-8',
-    'Test-9',
-    'Test-10',
-  ];
+  List<String> toDoList = [];
   late Widget wid;
   @override
   void initState() {
@@ -35,6 +24,7 @@ class _ToDoScaffold extends State<ToDoScaffold> {
     });
   }
 
+  String inputString = '';
   List<Color> colorTheme = [Color(0xff000000), Color(0xff000000)];
   @override
   Widget build(BuildContext context) {
@@ -45,7 +35,102 @@ class _ToDoScaffold extends State<ToDoScaffold> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (context) {
+                    return SizedBox.expand(
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                'Add A Task',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: TextField(
+                                onChanged:
+                                    (st) => {
+                                      setState(() {
+                                        inputString = st;
+                                      }),
+                                    },
+                                decoration: InputDecoration(
+                                  label: Text('Enter Task'),
+                                  labelStyle: TextStyle(color: Colors.black),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            OutlinedButton(
+                              style: ButtonStyle(
+                                shape: WidgetStateProperty.all(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                ),
+                              ),
+                              onPressed:
+                                  () => {
+                                    if (inputString == '')
+                                      {
+                                        Navigator.pop(context),
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return Dialog(
+                                              child: Container(
+                                                height: 100,
+                                                width: 200,
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(
+                                                    20.0,
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      'Empty String Is Not Allowed',
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      }
+                                    else
+                                      {
+                                        setState(() {
+                                          toDoList.add(inputString);
+                                          wid = ToDoView(
+                                            toDoList: toDoList,
+                                            func: functionDelete,
+                                          );
+                                          inputString = '';
+                                          Navigator.pop(context);
+                                        }),
+                                      },
+                                  },
+                              child: Text('Create Task'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
               shape: Border.all(color: Colors.grey, width: 3),
               backgroundColor: Colors.black,
               child: Icon(Icons.add, color: Colors.grey),
