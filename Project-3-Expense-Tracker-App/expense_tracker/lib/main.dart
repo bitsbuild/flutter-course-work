@@ -65,6 +65,10 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
       date: DateTime.now(),
     ),
   ];
+  late String title;
+  late double amount;
+  late DateTime date;
+  late Category category;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +84,135 @@ class _ExpenseTrackerScaffold extends State<ExpenseTrackerScaffold> {
             padding: const EdgeInsets.all(8.0),
             child: FloatingActionButton(
               tooltip: 'Add Your Expense',
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  isDismissible: true,
+                  builder: (ctx) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Text(
+                                'Add Your Expense',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: TextField(
+                                style: TextStyle(color: Colors.white),
+                                // maxLength: 50,
+                                decoration: InputDecoration(
+                                  labelStyle: TextStyle(color: Colors.white),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  label: Text('Enter Expense Title'),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: TextField(
+                                keyboardType: TextInputType.datetime,
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                  labelStyle: TextStyle(color: Colors.white),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  label: Text('Enter Expense Date And Time'),
+                                ),
+                              ),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: TextField(
+                                keyboardType: TextInputType.number,
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                  labelStyle: TextStyle(color: Colors.white),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  label: Text('Enter Expense Amount'),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: DropdownButtonFormField(
+                                decoration: InputDecoration(
+                                  labelText: 'Chose Expense Category',
+                                  labelStyle: TextStyle(color: Colors.white),
+                                  border: OutlineInputBorder(),
+                                ),
+                                dropdownColor: Colors.black,
+                                style: TextStyle(color: Colors.white),
+                                isExpanded: true,
+                                enableFeedback: true,
+                                items: [
+                                  DropdownMenuItem(
+                                    value: 'Food',
+                                    child: Text('Food'),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 'Travel',
+                                    child: Text('Travel'),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 'Leisure',
+                                    child: Text('Leisure'),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 'Work',
+                                    child: Text('Work'),
+                                  ),
+                                ],
+                                onChanged: (str) => {},
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: OutlinedButton(
+                                style: ButtonStyle(
+                                  shape: WidgetStateProperty.all(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(0),
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () => {},
+                                child: Text(
+                                  'Create Expense Record',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
               backgroundColor: Colors.black,
               child: Icon(Icons.add, color: Colors.white),
             ),
