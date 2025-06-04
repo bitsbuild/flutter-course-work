@@ -21,6 +21,20 @@ class _ToDoScaffold extends State<ToDoScaffold> {
     'Test-9',
     'Test-10',
   ];
+  late Widget wid;
+  @override
+  void initState() {
+    super.initState();
+    wid = ToDoView(toDoList: toDoList, func: functionDelete);
+  }
+
+  void functionDelete(List<String> st) {
+    setState(() {
+      toDoList = st;
+      wid = ToDoView(toDoList: toDoList, func: functionDelete);
+    });
+  }
+
   List<Color> colorTheme = [Color(0xff000000), Color(0xff000000)];
   @override
   Widget build(BuildContext context) {
@@ -61,7 +75,7 @@ class _ToDoScaffold extends State<ToDoScaffold> {
         decoration: BoxDecoration(gradient: LinearGradient(colors: colorTheme)),
         child: Padding(
           padding: const EdgeInsets.all(25.0),
-          child: Container(child: ToDoView(toDoList: toDoList)),
+          child: Container(child: wid),
         ),
       ),
     );
