@@ -7,6 +7,11 @@ class Expense {
   String title;
   Category category;
   double amount;
-  Expense({required this.title, required this.category, required this.amount})
-    : id = Uuid().v4();
+  DateTime date;
+  Expense({
+    required this.date,
+    required this.title,
+    required this.category,
+    required this.amount,
+  }) : id = Uuid().v4();
 }

@@ -10,7 +10,12 @@ class ExpenseTrackerScaffold extends StatefulWidget {
 class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
   List<Color> col = [Color(0xff8E0E00), Color(0xff1F1C18)];
   List<Expense> li = [
-    Expense(title: 'Trekking', category: Category.leisure, amount: 10),
+    Expense(
+      title: 'Trekking',
+      category: Category.leisure,
+      amount: 10,
+      date: DateTime.now(),
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,13 @@ class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
                     context: context,
                     builder: (ctx) {
                       return SizedBox.expand(
-                        child: Center(child: Text('Hello')),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [],
+                          ),
+                        ),
                       );
                     },
                   ),
