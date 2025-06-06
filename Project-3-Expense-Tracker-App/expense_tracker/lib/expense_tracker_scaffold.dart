@@ -8,7 +8,7 @@ class ExpenseTrackerScaffold extends StatefulWidget {
 }
 
 class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
-  List<Color> col = [Color(0xff8E0E00), Color(0xff1F1C18)];
+  List<Color> col = [Color(0xff41295a), Color(0xff2F0743)];
   List<Expense> li = [
     Expense(
       title: 'Trekking',
@@ -17,6 +17,12 @@ class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
       date: DateTime.now(),
     ),
   ];
+  var categoryMap = {
+    Category.food: 'Food',
+    Category.work: 'Work',
+    Category.travel: 'Travel',
+    Category.leisure: Icons.airline_seat_recline_extra,
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,36 +66,37 @@ class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
       body: Container(
         decoration: BoxDecoration(gradient: LinearGradient(colors: col)),
         child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: col),
-              border: Border.all(color: Colors.white, width: 3),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Center(
-                      child: Text(
-                        '1-1-1-1-1:::::Analytics:::::1-1-1-1-1',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+          padding: const EdgeInsets.all(15.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Center(
+                    child: Text(
+                      '1-1-1-1-1:::::Analytics:::::1-1-1-1-1',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 300,
-                    child: ListView.builder(
-                      itemCount: li.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
+                ),
+                SizedBox(
+                  height: 300,
+                  child: ListView.builder(
+                    itemCount: li.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Dismissible(
+                        key: ValueKey(li[index].id),
+                        onDismissed: (DismissDirection direction) {
+                          List.from(
+                            li,
+                          ).removeWhere((e) => e.id == li[index].id);
+                        },
+                        child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Center(
                             child: SizedBox(
@@ -116,7 +123,7 @@ class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        'Date: ${li[index].date}',
+                                        'Date: ${li[index].date.toString().split(' ')[0]}',
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold,
@@ -125,12 +132,20 @@ class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Category: ${li[index].category.toString()}',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Category: ',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Icon(
+                                            categoryMap[li[index].category]
+                                                as IconData?,
+                                          ),
+                                        ],
                                       ),
                                     ),
                                     Padding(
@@ -148,12 +163,12 @@ class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
                               ),
                             ),
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
