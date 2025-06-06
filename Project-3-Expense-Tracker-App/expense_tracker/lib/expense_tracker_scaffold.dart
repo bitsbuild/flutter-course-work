@@ -1,5 +1,6 @@
 import 'package:expense_tracker/expense_tracker_class.dart';
 import 'package:flutter/material.dart';
+import 'package:date_picker_plus/date_picker_plus.dart';
 
 class ExpenseTrackerScaffold extends StatefulWidget {
   const ExpenseTrackerScaffold({super.key});
@@ -9,6 +10,10 @@ class ExpenseTrackerScaffold extends StatefulWidget {
 
 class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
   List<Color> col = [Color(0xff41295a), Color(0xff2F0743)];
+  String categoryChoice = 'Travel';
+  late String titleChoice;
+  late double amountChoice;
+  late Category category;
   List<Expense> li = [
     Expense(
       title: 'Trekking',
@@ -17,14 +22,16 @@ class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
       date: DateTime.now(),
     ),
   ];
+  late DateTime date;
+  DateTime? pickedDate;
   var categoryMap = {
-    Category.food: 'Food',
-    Category.work: 'Work',
-    Category.travel: 'Travel',
+    Category.food: Icons.local_pizza_rounded,
+    Category.work: Icons.laptop,
+    Category.travel: Icons.train,
     Category.leisure: Icons.airline_seat_recline_extra,
   };
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context1) {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -34,16 +41,146 @@ class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
                 () => {
                   showModalBottomSheet(
                     isScrollControlled: false,
-                    context: context,
+                    context: context1,
                     builder: (ctx) {
-                      return SizedBox.expand(
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [],
-                          ),
-                        ),
+                      return StatefulBuilder(
+                        builder: (context, setState) {
+                          return SizedBox.expand(
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(15.00),
+                                    child: Text(
+                                      'Enter Transaction Details',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextField(
+                                      onChanged: (st) {
+                                        setState(() {
+                                          titleChoice = st.toString();
+                                        });
+                                      },
+                                      decoration: InputDecoration(
+                                        label: Text('Enter Expense Title'),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            width: 5,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ), //Title
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: TextField(
+                                      keyboardType: TextInputType.number,
+                                      onChanged: (st) {
+                                        setState(() {
+                                          amountChoice =
+                                              double.tryParse(st) ?? 0.00;
+                                        });
+                                      },
+                                      decoration: InputDecoration(
+                                        label: Text('Enter Expense Amount'),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            width: 5,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: DropdownButton(
+                                      isExpanded: true,
+                                      value: categoryChoice,
+                                      items: [
+                                        DropdownMenuItem(
+                                          value: 'Food',
+                                          child: Text('Food'),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 'Work',
+                                          child: Text('Work'),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 'Travel',
+                                          child: Text('Travel'),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 'Leisure',
+                                          child: Text('Leisure'),
+                                        ),
+                                      ],
+                                      onChanged: (st) {
+                                        setState(() {
+                                          categoryChoice = st.toString();
+                                        });
+                                      },
+                                    ),
+                                  ), //Category
+                                  Padding(
+                                    padding: const EdgeInsets.all(25.0),
+                                    child: OutlinedButton(
+                                      style: ButtonStyle(
+                                        shape: WidgetStateProperty.all(
+                                          RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              0,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      onPressed:
+                                          () async => {
+                                            pickedDate =
+                                                await showDatePickerDialog(
+                                                  context: context,
+                                                  minDate: DateTime(2000, 1, 1),
+                                                  maxDate: DateTime(
+                                                    2023,
+                                                    12,
+                                                    31,
+                                                  ),
+                                                ),
+                                            date = pickedDate ?? DateTime.now(),
+                                          },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            'Pick The Date Of Transaction',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          Icon(
+                                            Icons.calendar_month,
+                                            color: Colors.black,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       );
                     },
                   ),
@@ -141,10 +278,7 @@ class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                          Icon(
-                                            categoryMap[li[index].category]
-                                                as IconData?,
-                                          ),
+                                          Icon(categoryMap[li[index].category]),
                                         ],
                                       ),
                                     ),
