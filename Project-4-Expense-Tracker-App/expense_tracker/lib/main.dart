@@ -14,16 +14,27 @@ class ExpenseTracker extends StatefulWidget {
 
 List<Expense> expenses = [];
 void listAdd(Expense e) {
-  print(expenses.length);
   expenses.add(e);
-  print(expenses.length);
 }
 
+void listDelete(Map<Expense, int> i) {}
+
 class _ExpenseTrackerState extends State<ExpenseTracker> {
+  late Widget wid;
+  @override
+  void initState() {
+    super.initState();
+    wid = ExpenseTrackerScaffold(
+      functionAdd: listAdd,
+      functionDelete: listDelete,
+      exp: expenses,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ExpenseTrackerScaffold(functionAdd: listAdd),
+      home: wid,
       debugShowCheckedModeBanner: false,
       title: 'Expense Tracker',
     );

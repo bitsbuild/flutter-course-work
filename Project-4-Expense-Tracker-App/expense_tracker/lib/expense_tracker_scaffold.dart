@@ -5,7 +5,14 @@ import 'package:flutter/material.dart';
 
 class ExpenseTrackerScaffold extends StatefulWidget {
   late ValueChanged<Expense> functionAdd;
-  ExpenseTrackerScaffold({super.key, required this.functionAdd});
+  late ValueChanged<Map<Expense, int>> functionDelete;
+  late List<Expense> exp;
+  ExpenseTrackerScaffold({
+    super.key,
+    required this.functionAdd,
+    required this.functionDelete,
+    required this.exp,
+  });
   @override
   State<ExpenseTrackerScaffold> createState() => _ExpenseTrackerScaffoldState();
 }
@@ -15,7 +22,10 @@ class _ExpenseTrackerScaffoldState extends State<ExpenseTrackerScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ExpenseTrackerAppbar(functionAdd: widget.functionAdd),
-      body: expenseTrackerBody,
+      body: ExpenseTrackerBody(
+        functionDelete: widget.functionDelete,
+        exp: widget.exp,
+      ),
     );
   }
 }
