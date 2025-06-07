@@ -29,7 +29,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
 
   void listDelete(Map<Expense, int> i) {
     setState(() {
-      int indexToRemove = i.values.first; // Or i[i.keys.first]
+      int indexToRemove = i.values.first;
       expenses.removeAt(indexToRemove);
       wid =
           wid = ExpenseTrackerScaffold(
