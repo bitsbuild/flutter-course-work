@@ -38,7 +38,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
         exp: expenses,
         countFood: countFood,
         countLeisure: countLeisure,
-        countTravel: countLeisure,
+        countTravel: countTravel,
         countWork: countWork,
       );
     });
@@ -54,7 +54,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
         exp: expenses,
         countFood: countFood,
         countLeisure: countLeisure,
-        countTravel: countLeisure,
+        countTravel: countTravel,
         countWork: countWork,
       );
     });
@@ -69,7 +69,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
       exp: expenses,
       countFood: countFood,
       countLeisure: countLeisure,
-      countTravel: countLeisure,
+      countTravel: countTravel,
       countWork: countWork,
     );
   }
