@@ -12,15 +12,34 @@ class ExpenseTracker extends StatefulWidget {
   State<ExpenseTracker> createState() => _ExpenseTrackerState();
 }
 
-List<Expense> expenses = [];
-void listAdd(Expense e) {
-  expenses.add(e);
-}
-
-void listDelete(Map<Expense, int> i) {}
-
 class _ExpenseTrackerState extends State<ExpenseTracker> {
   late Widget wid;
+  List<Expense> expenses = [];
+  void listAdd(Expense e) {
+    setState(() {
+      expenses.add(e);
+      wid =
+          wid = ExpenseTrackerScaffold(
+            functionAdd: listAdd,
+            functionDelete: listDelete,
+            exp: expenses,
+          );
+    });
+  }
+
+  void listDelete(Map<Expense, int> i) {
+    setState(() {
+      int indexToRemove = i.values.first; // Or i[i.keys.first]
+      expenses.removeAt(indexToRemove);
+      wid =
+          wid = ExpenseTrackerScaffold(
+            functionAdd: listAdd,
+            functionDelete: listDelete,
+            exp: expenses,
+          );
+    });
+  }
+
   @override
   void initState() {
     super.initState();
