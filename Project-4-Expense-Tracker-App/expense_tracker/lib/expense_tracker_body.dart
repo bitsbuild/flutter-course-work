@@ -1,3 +1,4 @@
+import 'package:expense_tracker/chart/chart.dart';
 import 'package:flutter/material.dart';
 
 import 'expense_tracker_class.dart';
@@ -111,7 +112,12 @@ class _ExpenseTrackerBodyState extends State<ExpenseTrackerBody> {
           children: [
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Text('Analytics', style: TextStyle(color: Colors.white)),
+              child: Chart(
+                countFood: widget.countFood,
+                countLeisure: widget.countLeisure,
+                countTravel: widget.countTravel,
+                countWork: widget.countWork,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(15.00),
