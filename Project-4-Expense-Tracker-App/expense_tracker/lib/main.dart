@@ -27,16 +27,15 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
     });
   }
 
-  void listDelete(Map<Expense, int> i) {
+  void listDelete(Map<Expense, int> i) async {
     setState(() {
       int indexToRemove = i.values.first;
       expenses.removeAt(indexToRemove);
-      wid =
-          wid = ExpenseTrackerScaffold(
-            functionAdd: listAdd,
-            functionDelete: listDelete,
-            exp: expenses,
-          );
+      wid = ExpenseTrackerScaffold(
+        functionAdd: listAdd,
+        functionDelete: listDelete,
+        exp: expenses,
+      );
     });
   }
 
