@@ -5,10 +5,18 @@ import 'expense_tracker_class.dart';
 class ExpenseTrackerBody extends StatefulWidget {
   late ValueChanged<Map<Expense, int>> functionDelete;
   List<Expense> exp;
+  late int countFood;
+  late int countWork;
+  late int countTravel;
+  late int countLeisure;
   ExpenseTrackerBody({
     super.key,
     required this.functionDelete,
     required this.exp,
+    required this.countFood,
+    required this.countWork,
+    required this.countTravel,
+    required this.countLeisure,
   });
   @override
   State<ExpenseTrackerBody> createState() => _ExpenseTrackerBodyState();
