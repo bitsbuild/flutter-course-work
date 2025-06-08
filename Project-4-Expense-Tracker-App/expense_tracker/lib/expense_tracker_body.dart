@@ -119,9 +119,8 @@ class _ExpenseTrackerBodyState extends State<ExpenseTrackerBody> {
                 countWork: widget.countWork,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(15.00),
-              child: SizedBox(height: 200, child: wid),
+            Expanded(
+              child: Padding(padding: const EdgeInsets.all(15.00), child: wid),
             ),
           ],
         ),
